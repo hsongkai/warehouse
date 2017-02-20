@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <meta charset="utf-8">
+ </HEAD>
+		<style>
+			div {
+				width: 10px;
+				height: 10px;
+				background: black;
+				position: absolute;
+				top: 100px;
+				left: 200px;
+			}
+
+			body{height:2000px;}
+		</style>
+ <BODY>
+  <div  id="header"></div>
+ 
+ <script>
+var xx=0;
+var yy=0;
+   document.onclick=function(){
+
+			 xx=parseInt(Math.random()*800);
+			 yy=parseInt(Math.random()*400);
+
+
+
+
+      var header = document.getElementById("header")
+
+       // header.style.height="0px";
+
+		var str = "";  //////
+           var i =1;
+		   while(i<=20){
+		    str= str+"<div  id='div"+ i +"'></div>";
+			i++;
+		
+			}
+			document.body.innerHTML=str;
+          var i=1;
+          var left=0;
+		  while(i<=20){
+		  var ok = document.getElementById("div"+i);
+		  var r = parseInt(Math.random() * 256);
+		  var g = parseInt(Math.random() * 256);
+		  var b = parseInt(Math.random() * 256);
+		    ok.style.background="rgb("+r+","+g+","+b+")";
+		//    ok.style.left=left+"px";
+
+		//	left=left+20;
+			i++;
+			
+	  }
+   
+
+
+	var i =0;
+	while(i<20){
+		i++;
+		boom("div"+i);
+	}
+	
+      function boom(divId){
+			console.log(divId);
+	        var  oDiv=document.getElementById(divId);
+             
+			var x=300;
+			var y=200;
+			
+			var xSpeed = Math.random()*10;
+			var ySpeed = Math.random()*10;
+             
+			  
+			  if(Math.random()>0.5){
+			     xSpeed=-1*xSpeed;
+			  }
+			  if(Math.random()>0.5){
+			     ySpeed=-1*ySpeed;
+			  }
+
+
+			
+			var timer =setInterval(function(){
+			 var  oDiv=document.getElementById(divId);
+			x= x + xSpeed;
+			y= y + ySpeed;
+
+			ySpeed++;
+			
+			oDiv.style.top=y + "px";
+			oDiv.style.left=x + "px";
+			
+
+			if(y>500){
+			oDiv.style.height="0px";
+            clearInterval(timer);
+		     }
+			},50);
+	  
+	  }
+	     
+}
+
+
+
+
+
+ </script>
+ </BODY>
+</HTML>

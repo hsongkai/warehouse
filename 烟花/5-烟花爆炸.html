@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 10px;
+				height: 10px;
+				background: black;
+				position: absolute;
+				top: 100px;
+				left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box"></div>
+		
+		<script>
+		
+			var i = 1;
+		
+			// 在整个页面中 添加 点击事件处理函数
+			document.onclick = function() {
+				
+				
+				// 在原本基础上，再添加 div
+				var str = "<div id='box'></div>";
+				
+				var i = 1;
+				while (i <= 20) {
+					str = str + "<div id='div" + i + "'></div>";          //创建20个Div
+					i++;
+				}
+				document.body.innerHTML = str;  //     这二十个DI在页面中显示
+				
+				
+				// 让烟花消失
+				var oBox = document.getElementById("box");
+				
+				// 消失
+				oBox.style.height = "0px";
+				
+				var i = 1;
+				
+				while (i <= 20) {
+					var oDiv = document.getElementById("div" + i);
+					
+					var r = parseInt(Math.random() * 256); // 红色
+					var g = parseInt(Math.random() * 256); // 绿色
+					var b = parseInt(Math.random() * 256); // 蓝色
+					
+					oDiv.style.background = "rgb("+r+","+g+","+b+")";
+					
+					i++;
+				}
+				
+				
+				// 使用自己创建的功能，动起来
+				// boom("div1");
+				var i = 1;
+				// 循环20次，让烟花碎片运动起来
+				while (i <= 20) {
+					boom("div" + i);   //爆炸
+					i++;
+				}
+			}
+			
+			
+			
+			
+			// 自己写的一个功能
+			// 作用： 让 divId 动起来（自由落体）
+			function boom(divId) {
+				// 获取div节点
+				var oDiv = document.getElementById(divId);
+				
+				// 初始的x和y值
+				var y = 100;
+				var x = 200;
+				
+				// 随机产生 x 和 y 的速度，有正有负
+				var ySpeed = Math.random() * 10;
+				var xSpeed = Math.random() * 10;
+				if (Math.random() > 0.5) {
+					xSpeed = -1 * xSpeed;
+				}
+				if (Math.random() > 0.5) {
+					ySpeed = -1 * ySpeed;
+				}
+				
+				// 创建动画定时器
+				var timer = setInterval(function() {
+					// 更新 x 和 y 的位置
+					y = y + ySpeed;
+					x = x + xSpeed;
+					
+					// 自由落体，y的速度会增加
+					ySpeed++;
+					
+					// 更新位置
+					oDiv.style.top = y + "px";
+					oDiv.style.left = x + "px";
+					
+					// 到达底部，关闭动画
+					if (y >= 400) {
+						oDiv.style.height = "0px";
+						clearInterval(timer);
+					}
+				}, 50);
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 10px;
+				height: 10px;
+				background: black;
+				position: absolute;
+				top: 100px;
+				left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box"></div>
+		
+		<script>
+		
+			var i = 1;
+		
+			// 在整个页面中 添加 点击事件处理函数
+			document.onclick = function() {
+				
+				// 让烟花消失
+				var oBox = document.getElementById("box");
+				
+				// 消失
+				oBox.style.height = "0px";
+				
+				// 在原本基础上，再添加 div
+				var str = document.body.innerHTML;
+				
+				var i = 1;
+				while (i <= 20) {
+					str = str + "<div id='div" + i + "'></div>";
+					i++;
+					console.log(i);
+				}
+				document.body.innerHTML = str;
+				
+				
+				
+				var i = 1;
+				var left = 0;
+				while (i <= 20) {
+					var oDiv = document.getElementById("div" + i);
+					
+					// Math.random() [0, 1)
+					// Math.random() * 256  [0, 256)
+					// 舍弃小数 [0,255]
+					var r = parseInt(Math.random() * 256); // 红色
+					var g = parseInt(Math.random() * 256); // 绿色
+					var b = parseInt(Math.random() * 256); // 蓝色
+					
+					oDiv.style.background = "rgb("+r+","+g+","+b+")";
+					
+					oDiv.style.left = left + "px";
+					
+					left = left + 20;
+					
+					i++;
+				}
+			}
+			
+		</script>
+	</body>
+</html>
