@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		border: 0;    /*边框*/
+		
+	}
+		body{
+			background: url(img/bg.jpg);
+			background-size: 100%;
+			position: fixed;
+			width: 100%;
+			height: 100%;		
+		}
+	    #box{
+	    	width: 50px;
+	    	height: 50px;
+	    	position: absolute;
+	    	top: 0;
+	    	left: 0;
+		}
+		img{
+			width: 10px;
+			height: 10px;
+			position: absolute;    /*绝对定位*/
+			top: 0;
+			left: 0;
+		}
+	</style>
+	 <div id="box"></div>
+	</head>
+	<body>
+	</body>
+	
+	<script type="text/javascript" src="js/move.js" ></script>
+	<script>
+	function create(){                                      //定义的功能  功能名字是  create
+	    var oDiv = document.getElementById("box");           //获取div   放进容器中
+	    
+	    var oimg = document.createElement("img");           //创建一个图片节点存储在容器oimg中
+	    
+	    oimg.src="img/1.gif";                               //图片的位置
+	    oDiv.appendChild(oimg);                             //appendChild代表添加子节点到容器oDiv中
+	    
+	    fly(oimg);                                             //已经定义的功能让它 飞起来
+	}
+	  
+	 function fly(oimg){                       //自己定义一个功能    飞 把要飞的图片节点放进去
+	 	
+	 	var x = parseInt(Math.random()*800);            //parseInt（）是去整数      Math.random（）是产生随机数
+	 	var y = parseInt(Math.random()*300);
+	 	startMove(oimg,{left:x,top:y},                   //startMove是移动的意思 后面的是位置
+	 		function(){    
+	 		
+	 		fly(oimg);                                //  再它飞的第一遍之后再重新起飞
+	 	});
+	 }
+	 
+	 var i=1
+	 var a = setInterval(function(){                        //  添加一个计时器
+	 	create();    //这个是上面已经创建的功能（创建萤火虫）     在这的作用是每隔2秒创建一个
+	       i++;
+	      if(i>20){
+	      clearInterval(a)
+	      
+	      }
+	 
+	 },2000);
+	</script>
+</html>
