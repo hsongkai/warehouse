@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <meta charset="utf-8">
+ </HEAD>
+ <style>
+ #header{
+       width:30px;
+	   height:30px;
+	   background:red;
+	   border-radius:50%;
+	   position:absolute;left:0px;top:0px;
+	   
+ }
+ hr{ width:100%;position:absolute;left:0px;top:175px;}
+ </style>
+ <BODY>
+  <div id="header"></div>
+  <hr/>
+ </BODY>
+ <script>
+  var header = document.getElementById("header");
+  var a = 0;
+  var b = 0;
+  var c = 0;
+  var d=1;
+ var ting = setInterval(function(){
+       b=b+1;
+	   a=a+b;
+	   c=c+4;
+	  
+	header.style.top=a+"px";
+	header.style.left=c+"px";
+	   
+	  if(a>150){
+	    b=0.8*b;
+	   b=parseInt(b); //取整数
+	   b=-1*b;
+	   b--;
+      
+	   d++
+       if(d%2==1){
+	   header.style.background="yellow";
+	   }
+	   else{
+	   header.style.background="red";}
+
+
+	  if(Math.abs(b)<=2){
+	  clearInterval(ting);	   
+	  }
+	}
+  },50);
+ </script>
+</HTML>
