@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<style>
+		
+			#plane {
+				/*绝对定位*/
+				position: absolute;
+				left: 0;
+				top: 0;
+				
+				background: url(img/plate.png);
+				/* css3 的新属性，用于设置背景图片大小*/
+				background-size: 300px;
+				width: 300px;
+				height: 300px;
+				
+				transform: rotate(90deg);
+			}
+		
+			#hand {
+				/*绝对定位*/
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: url(img/hand.png);
+				/* css3 的新属性，用于设置背景图片大小*/
+				background-size: 300px;
+				width: 300px;
+				height: 300px;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		<div id="plane"></div>
+		<div id="hand"></div>
+		
+	</body>
+	
+	<script>
+		// js 写在这里
+		
+		// 怎么在某个位置让停下来？
+		
+		// 怎么让转盘停下来？
+		//   转盘因为有个定时器，在不断地旋转
+		//   所以，只需要
+		//     1. 关闭定时器 或者 
+		//     2. 定时器内部不增加角度
+		
+		
+		// 位置
+		//    1. 固定的角度
+		//    2. 固定的时间
+		
+		
+		/*
+		var a = 0;
+			
+		// 定时器： 功能， 时间（单位为毫秒）
+		//  timer1 是用于保存创建的定时器
+		var timer1 = setInterval(function() {
+			// 旋转30度
+			
+			// HBuild     dg
+			var oPlane = document.getElementById("plane");
+			
+			a = a + 30;
+			
+			if (a >= 3600) {
+				// 关闭定时器
+				clearInterval(timer1);
+			}
+			
+			oPlane.style.transform = "rotate(" + a + "deg)";
+			
+			
+			// 旋转30度
+//			oPlane.style.transform = "rotate(30deg)";
+			
+			console.log("老子执行了！");
+			
+		}, 100);
+		*/
+		
+		
+		/*
+		// 在 10s 之后停止
+		var a = 0;
+		
+		var t = 0;
+			
+		// 定时器： 功能， 时间（单位为毫秒）
+		//  timer1 是用于保存创建的定时器
+		var timer1 = setInterval(function() {
+			
+			// HBuild     dg
+			var oPlane = document.getElementById("plane");
+			
+			a = a + 30;
+			
+			oPlane.style.transform = "rotate(" + a + "deg)";
+			
+			t = t + 100;
+			if (t >= 10000) {
+				clearInterval(timer1);
+			}
+		}, 100);
+		*/
+		
+		/*
+		// 定时器内部不增加角度
+		
+		// 在 10s 之后停止
+		var a = 0;
+		
+		var t = 0;
+			
+		// 定时器： 功能， 时间（单位为毫秒）
+		//  timer1 是用于保存创建的定时器
+		var timer1 = setInterval(function() {
+			
+			// HBuild     dg
+			var oPlane = document.getElementById("plane");
+			
+			
+			t = t + 100;
+			if (t <= 10000) {
+				a = a + 30;
+			}
+			
+			
+			oPlane.style.transform = "rotate(" + a + "deg)";
+			
+		}, 100);
+		*/
+		
+		// 定时器内部不增加角度
+		
+		/*
+		// 在 10s 之后停止
+		var a = 0;
+		var speed = 30;
+		
+		// 定时器： 功能， 时间（单位为毫秒）
+		//  timer1 是用于保存创建的定时器
+		var timer1 = setInterval(function() {
+			
+			// HBuild     dg
+			var oPlane = document.getElementById("plane");
+			
+			a = a + speed;
+			
+			speed--;
+			if (speed <= 0) {
+				speed = 0;
+			}
+			
+			oPlane.style.transform = "rotate(" + a + "deg)";
+			
+		}, 100);
+		
+		
+		var oHand = document.getElementById("hand");
+		
+		oHand.onclick = function() {
+			clearInterval(timer1);
+		}
+		*/
+		
+		
+		// 练习：
+		//   转盘一直在转，当你点击手的时候，停止转盘
+		
+		
+		/*
+		// 在 10s 之后停止
+		var a = 0;
+		
+		// 定时器： 功能， 时间（单位为毫秒）
+		//  timer1 是用于保存创建的定时器
+		var timer1 = setInterval(function() {
+			
+			// HBuild     dg
+			var oPlane = document.getElementById("plane");
+			
+			a = a + 30;
+			
+			
+			oPlane.style.transform = "rotate(" + a + "deg)";
+			
+		}, 100);
+		
+		
+		var oHand = document.getElementById("hand");
+		
+		oHand.onclick = function() {
+			clearInterval(timer1);
+			
+			// 获取转盘转过的角度，就是 a 了
+//			36000000 / 360 = 100000
+			
+			// 360度的值
+			var deg = a % 360;
+			
+//			1->8
+//			2->7
+//			3->6
+			
+			// Math.round 是代表四舍五入
+			var b = Math.round(9 - deg / 45);
+			
+			alert(b);
+			
+//			alert("恭喜您中了 XX 奖");
+		}
+		
+		*/
+		
+		
+		
+		// 在 10s 之后停止
+		var a = 0;
+		
+		// 定时器： 功能， 时间（单位为毫秒）
+		//  timer1 是用于保存创建的定时器
+		var timer1 = setInterval(function() {
+			
+			// HBuild     dg
+			var oPlane = document.getElementById("plane");
+			
+			a = a + 30;
+			
+			
+			oPlane.style.transform = "rotate(" + a + "deg)";
+			
+		}, 100);
+		
+		
+		var oHand = document.getElementById("hand");
+		
+		oHand.onclick = function() {
+			clearInterval(timer1);
+			
+			// 获取转盘当前转过的角度，
+			//    1. a
+			//    2. 时间
+			//    3. 
+			
+			var oPlane = document.getElementById("plane");
+			var dd = oPlane.style.transform;
+			
+			alert(dd);
+			
+			
+			// 360度的值
+			var deg = dd % 360;
+			
+			
+			// Math.round 是代表四舍五入
+			var b = Math.round(9 - deg / 45);
+			
+			alert(b);
+			
+//			alert("恭喜您中了 XX 奖");
+		}
+	</script>
+	
+</html>

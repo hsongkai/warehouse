@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+	body{position: relative;}
+		#he{
+			width: 500px;
+			height: 500px;
+			background-size: 500px;  /*给它背景的宽度*/
+			background: url(img/hand.png);
+			position:absolute;
+			top: 0px;
+			left: 0px;
+		}
+		#ha{
+			width: 500px;
+			height: 500px;
+			background-size: 500px;  /*给它背景的宽度*/
+			background: url(img/plate.png);
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		} 
+	</style>
+	<body>
+		<div  id="ha"></div>
+		<div  id="he"></div>
+	</body>
+	<script>
+	var a = 0;             
+		  timer1= setInterval(function(){        //把计时器装进容器timer1中
+		   	a = a+2;
+		   	 var ha = document.getElementById("ha")     // 把ha div放进ha容器中
+		     ha.style.transform="rotate("+ a +"deg)";     //表示转动的度数
+		   },50)
+      
+      
+      var he = document.getElementById("he")   //把he div 放进 he 容器中
+       he.onclick= function(){              
+       	clearInterval(timer1)      //点击he 就能够停止转动
+       
+       
+		 var  haa =document.getElementById("ha")  //把ha  div放进容器haa
+		 var  hh = ha.style.transform;   //  把度数结果装进hh容器中
+		alert(hh);                   //弹出度数
+		 
+		 var r = hh.indexOf("deg")    //把字符装
+		 var t= hh.substring(7 , r)  //截取字符
+			 
+	    var deg = t%360 ;           //把截取的字符除以一圈360度
+	
+        var  e =Math.round(9 - deg / 45);    //因为是逆时针转的  8份每份45度   因为实际数字跟显示的数字正好等于9，所以必须9-  才能够正确
+    
+        alert(e);
+       }
+	</script>
+</html>

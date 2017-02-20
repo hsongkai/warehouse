@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	<style>
+			#plane{width: 500px;height:500px;background:url(img/plate.png);background-size:500px;position: absolute;top:0px;left:0px}
+			#hand{width: 500px;height: 500px;background:url(img/hand.png);background-size:500px;position: absolute;top:0;left:0}
+		</style>
+	</head>
+	<body style="position: relative">
+		<div id="plane"></div>
+		<div id="hand"></div>
+		<script>
+			var a =0
+	    var timel  = setInterval(function(){
+				 a = a+1;
+				 var oplane =document.getElementById("plane");
+				 
+				 oplane.style.transform ="rotate("+a+"deg)";  //角度
+			},50)
+			
+			var plane = document.getElementById("hand")
+			plane.onclick=function(){
+			   clearInterval(timel)  //停止
+			}
+		</script>
+	</body>
+</html>

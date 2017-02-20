@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+			
+			
+			#hand {
+				/*绝对定位*/
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: url(img/hand.png);
+				/* css3 的新属性，用于设置背景图片大小*/
+				background-size: 300px;
+				width: 300px;
+				height: 300px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="hand"></div>
+		
+		<script>
+			
+			var oHand = document.getElementById("hand");
+			
+			oHand.onclick = function() {
+				alert("点击了！");
+			}
+			
+		</script>
+	</body>
+</html>
